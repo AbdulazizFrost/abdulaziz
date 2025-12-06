@@ -1355,7 +1355,7 @@
           width: 85%;
           max-width: 320px;
           height: 100vh;
-          background: var(--glass);
+          background: white;
           backdrop-filter: var(--blur);
           border-left: 1px solid var(--glass-border-light);
           flex-direction: column;
@@ -2024,7 +2024,7 @@
                         "
                     >
                         <a href="#contact" class="btn btn-primary" style="width: 100%">Связаться</a>
-                        <button id="resumeBtn" class="btn btn-outline" style="width: 100%">Скачать резюме</button>
+                        <button id="resumeBtn" class="btn btn-outline" style="width: 100%" type="button">Скачать резюме</button>
                     </div>
                 </div>
             </div>
@@ -2051,8 +2051,8 @@
                         <span class="project-tag">3D Modeling</span>
                     </div>
                     <div class="project-links">
-                        <a href="https://yandex.ru/games/app/472270?utm_source=app_page" class="project-link disabled" id="project1Demo">Демо (скоро)</a>
-                        <a href="#" class="project-link" id="project1Code">Код на GitHub</a>
+                        <a href="https://yandex.ru/games/app/472270?utm_source=app_page" class="project-link" id="project1Demo" target="_blank">Демо</a>
+                        <a href="https://github.com/AbdulazizFrost/school-anomalies" class="project-link" id="project1Code" target="_blank">Код на GitHub</a>
                     </div>
                 </div>
 
@@ -2070,7 +2070,7 @@
                     </div>
                     <div class="project-links">
                         <a href="#home" class="project-link" id="project2Demo">Демо (этот сайт)</a>
-                        <a href="#" class="project-link" id="project2Code">Код на GitHub</a>
+                        <a href="https://github.com/AbdulazizFrost/portfolio-blog" class="project-link" id="project2Code" target="_blank">Код на GitHub</a>
                     </div>
                 </div>
 
@@ -2087,8 +2087,8 @@
                         <span class="project-tag">JavaScript</span>
                     </div>
                     <div class="project-links">
-                        <a href="https://yandex.ru/games/app/472270?utm_source=app_page" class="project-link disabled" id="project3Demo">Демо (скоро)</a>
-                        <a href="#" class="project-link" id="project3Code">Код на GitHub</a>
+                        <a href="#" class="project-link disabled" id="project3Demo">Демо (скоро)</a>
+                        <a href="https://github.com/AbdulazizFrost/canvas-game" class="project-link" id="project3Code" target="_blank">Код на GitHub</a>
                     </div>
                 </div>
 
@@ -2107,7 +2107,7 @@
                     </div>
                     <div class="project-links">
                         <a href="#" class="project-link disabled" id="project4Demo">Демо (скоро)</a>
-                        <a href="#" class="project-link" id="project4Code">Код на GitHub</a>
+                        <a href="https://github.com/AbdulazizFrost/task-planner" class="project-link" id="project4Code" target="_blank">Код на GitHub</a>
                     </div>
                 </div>
             </div>
@@ -2436,31 +2436,13 @@
                 templateId: "template_wdordbj",
                 publicKey: "mLkxuD6fC19PM6EV1"
             },
-            resumeUrl: "https://drive.google.com/uc?export=download&id=YOUR_FILE_ID",
-            resumeViewUrl: "https://drive.google.com/file/d/YOUR_FILE_ID/view",
+            resumeUrl: "https://drive.google.com/file/d/1YOUR_FILE_ID/view?usp=sharing",
+            resumeViewUrl: "https://drive.google.com/file/d/1YOUR_FILE_ID/view?usp=sharing",
             socialLinks: {
                 github: "https://github.com/AbdulazizFrost",
                 telegram: "https://t.me/Yandex_Games_GameDev",
                 linkedin: "https://www.linkedin.com/in/abdulaziz-sidiqov-53903a3a0/",
                 instagram: "https://instagram.com/YOUR_USERNAME"
-            },
-            projectLinks: {
-                project1: {
-                    demo: "#",
-                    code: "https://github.com/AbdulazizFrost/school-anomalies"
-                },
-                project2: {
-                    demo: "#home",
-                    code: "https://github.com/AbdulazizFrost/portfolio-blog"
-                },
-                project3: {
-                    demo: "#",
-                    code: "https://github.com/AbdulazizFrost/canvas-game"
-                },
-                project4: {
-                    demo: "#",
-                    code: "https://github.com/AbdulazizFrost/task-planner"
-                }
             }
         };
 
@@ -2472,20 +2454,16 @@
         function checkConfiguration() {
             const warnings = [];
             
-            if (config.emailjs.serviceId === "YOUR_SERVICE_ID") {
-                warnings.push("EmailJS Service ID не настроен");
+            if (config.emailjs.serviceId === "service_7opx4dt" && 
+                config.emailjs.templateId === "template_wdordbj" && 
+                config.emailjs.publicKey === "mLkxuD6fC19PM6EV1") {
+                console.info("✅ EmailJS настроен корректно");
+            } else {
+                warnings.push("EmailJS не настроен");
             }
-            if (config.emailjs.templateId === "YOUR_TEMPLATE_ID") {
-                warnings.push("EmailJS Template ID не настроен");
-            }
-            if (config.emailjs.publicKey === "YOUR_PUBLIC_KEY") {
-                warnings.push("EmailJS Public Key не настроен");
-            }
+            
             if (config.resumeUrl.includes("YOUR_FILE_ID")) {
                 warnings.push("Ссылка на резюме не настроена");
-            }
-            if (config.socialLinks.instagram.includes("YOUR_USERNAME")) {
-                warnings.push("Instagram ссылка не настроена");
             }
             
             if (warnings.length > 0) {
@@ -2506,6 +2484,7 @@
         (function() {
             try {
                 emailjs.init(config.emailjs.publicKey);
+                console.log("✅ EmailJS инициализирован");
             } catch (error) {
                 console.error("Ошибка инициализации EmailJS:", error);
             }
@@ -2721,55 +2700,47 @@
 
         // 2. Кнопки проектов
         function setupProjectButtons() {
-            const projects = ['project1', 'project2', 'project3', 'project4'];
+            // Проект 1
+            document.getElementById("project1Demo").addEventListener("click", function(e) {
+                e.preventDefault();
+                if (this.classList.contains("disabled")) {
+                    showNotification(
+                        "info", 
+                        "В разработке", 
+                        "Демо этого проекта будет доступно в ближайшее время!"
+                    );
+                } else {
+                    window.open(this.href, "_blank");
+                }
+            });
             
-            projects.forEach((projectId, index) => {
-                // Демо
-                const demoBtn = document.getElementById(`${projectId}Demo`);
-                if (demoBtn) {
-                    demoBtn.addEventListener("click", function(e) {
-                        e.preventDefault();
-                        if (this.classList.contains("disabled")) {
-                            showNotification(
-                                "info", 
-                                "В разработке", 
-                                "Демо этого проекта будет доступно в ближайшее время!"
-                            );
-                        } else if (config.projectLinks[projectId].demo) {
-                            if (config.projectLinks[projectId].demo === "#home") {
-                                // Плавная прокрутка к началу
-                                document.querySelector('#home').scrollIntoView({ behavior: 'smooth' });
-                            } else {
-                                if (isMobile) {
-                                    window.location.href = config.projectLinks[projectId].demo;
-                                } else {
-                                    window.open(config.projectLinks[projectId].demo, "_blank");
-                                }
-                            }
-                        }
-                    });
-                }
-                
-                // Код
-                const codeBtn = document.getElementById(`${projectId}Code`);
-                if (codeBtn) {
-                    codeBtn.addEventListener("click", function(e) {
-                        e.preventDefault();
-                        if (config.projectLinks[projectId].code && !config.projectLinks[projectId].code.includes("github.com/AbdulazizFrost")) {
-                            showNotification(
-                                "info", 
-                                "Требуется настройка", 
-                                "Пожалуйста, настройте ссылку на GitHub репозиторий в конфигурации"
-                            );
-                        } else if (config.projectLinks[projectId].code) {
-                            if (isMobile) {
-                                window.location.href = config.projectLinks[projectId].code;
-                            } else {
-                                window.open(config.projectLinks[projectId].code, "_blank");
-                            }
-                        }
-                    });
-                }
+            document.getElementById("project1Code").addEventListener("click", function(e) {
+                e.preventDefault();
+                window.open(this.href, "_blank");
+            });
+
+            // Проект 2
+            document.getElementById("project2Demo").addEventListener("click", function(e) {
+                e.preventDefault();
+                // Плавная прокрутка к началу
+                document.querySelector('#home').scrollIntoView({ behavior: 'smooth' });
+            });
+            
+            document.getElementById("project2Code").addEventListener("click", function(e) {
+                e.preventDefault();
+                window.open(this.href, "_blank");
+            });
+
+            // Проект 3
+            document.getElementById("project3Code").addEventListener("click", function(e) {
+                e.preventDefault();
+                window.open(this.href, "_blank");
+            });
+
+            // Проект 4
+            document.getElementById("project4Code").addEventListener("click", function(e) {
+                e.preventDefault();
+                window.open(this.href, "_blank");
             });
         }
 
@@ -2778,57 +2749,33 @@
             // Кнопки в контактах
             document.getElementById("telegramBtn").addEventListener("click", function(e) {
                 e.preventDefault();
-                if (isMobile) {
-                    window.location.href = config.socialLinks.telegram;
-                } else {
-                    window.open(config.socialLinks.telegram, "_blank");
-                }
+                window.open(this.href, "_blank");
             });
             
             document.getElementById("githubBtn").addEventListener("click", function(e) {
                 e.preventDefault();
-                if (isMobile) {
-                    window.location.href = config.socialLinks.github;
-                } else {
-                    window.open(config.socialLinks.github, "_blank");
-                }
+                window.open(this.href, "_blank");
             });
             
             document.getElementById("linkedinBtn").addEventListener("click", function(e) {
                 e.preventDefault();
-                if (isMobile) {
-                    window.location.href = config.socialLinks.linkedin;
-                } else {
-                    window.open(config.socialLinks.linkedin, "_blank");
-                }
+                window.open(this.href, "_blank");
             });
 
             // Кнопки в футере
             document.getElementById("footerGithub").addEventListener("click", function(e) {
                 e.preventDefault();
-                if (isMobile) {
-                    window.location.href = config.socialLinks.github;
-                } else {
-                    window.open(config.socialLinks.github, "_blank");
-                }
+                window.open(this.href, "_blank");
             });
             
             document.getElementById("footerTelegram").addEventListener("click", function(e) {
                 e.preventDefault();
-                if (isMobile) {
-                    window.location.href = config.socialLinks.telegram;
-                } else {
-                    window.open(config.socialLinks.telegram, "_blank");
-                }
+                window.open(this.href, "_blank");
             });
             
             document.getElementById("footerLinkedin").addEventListener("click", function(e) {
                 e.preventDefault();
-                if (isMobile) {
-                    window.location.href = config.socialLinks.linkedin;
-                } else {
-                    window.open(config.socialLinks.linkedin, "_blank");
-                }
+                window.open(this.href, "_blank");
             });
             
             document.getElementById("footerInstagram").addEventListener("click", function(e) {
@@ -2836,11 +2783,7 @@
                 if (config.socialLinks.instagram.includes("YOUR_USERNAME")) {
                     showNotification("error", "Instagram не настроен", "Пожалуйста, настройте ссылку на Instagram в конфигурации");
                 } else {
-                    if (isMobile) {
-                        window.location.href = config.socialLinks.instagram;
-                    } else {
-                        window.open(config.socialLinks.instagram, "_blank");
-                    }
+                    window.open(config.socialLinks.instagram, "_blank");
                 }
             });
         }
@@ -2872,49 +2815,50 @@
 
             try {
                 // Проверяем конфигурацию EmailJS
-                if (config.emailjs.serviceId === "YOUR_SERVICE_ID" || 
-                    config.emailjs.templateId === "YOUR_TEMPLATE_ID" ||
-                    config.emailjs.publicKey === "YOUR_PUBLIC_KEY") {
-                    throw new Error("EmailJS не настроен");
-                }
-
-                // Отправляем через EmailJS
-                const response = await emailjs.send(
-                    config.emailjs.serviceId,
-                    config.emailjs.templateId,
-                    {
-                        from_name: formData.name,
-                        from_email: formData.email,
-                        message: formData.message,
-                        date: formData.date,
-                        page_url: formData.pageUrl,
-                    }
-                );
-
-                if (response.status === 200) {
-                    showNotification(
-                        "success",
-                        "Успешно отправлено!",
-                        `Спасибо, ${formData.name}! Я скоро отвечу вам на ${formData.email}.`,
-                        6000
+                if (config.emailjs.serviceId === "service_7opx4dt" && 
+                    config.emailjs.templateId === "template_wdordbj" &&
+                    config.emailjs.publicKey === "mLkxuD6fC19PM6EV1") {
+                    
+                    // Отправляем через EmailJS
+                    const response = await emailjs.send(
+                        config.emailjs.serviceId,
+                        config.emailjs.templateId,
+                        {
+                            from_name: formData.name,
+                            from_email: formData.email,
+                            message: formData.message,
+                            date: formData.date,
+                            page_url: formData.pageUrl,
+                        }
                     );
 
-                    // Очищаем форму
-                    document.getElementById("contact-form").reset();
-                    
-                    // Сохраняем в историю успешных отправок
-                    try {
-                        const sentMessages = JSON.parse(localStorage.getItem('sent_messages') || '[]');
-                        sentMessages.push({
-                            ...formData,
-                            timestamp: new Date().toISOString()
-                        });
-                        localStorage.setItem('sent_messages', JSON.stringify(sentMessages.slice(-10)));
-                    } catch (error) {
-                        console.log("Не удалось сохранить историю:", error);
+                    if (response.status === 200) {
+                        showNotification(
+                            "success",
+                            "Успешно отправлено!",
+                            `Спасибо, ${formData.name}! Я скоро отвечу вам на ${formData.email}.`,
+                            6000
+                        );
+
+                        // Очищаем форму
+                        document.getElementById("contact-form").reset();
+                        
+                        // Сохраняем в историю успешных отправок
+                        try {
+                            const sentMessages = JSON.parse(localStorage.getItem('sent_messages') || '[]');
+                            sentMessages.push({
+                                ...formData,
+                                timestamp: new Date().toISOString()
+                            });
+                            localStorage.setItem('sent_messages', JSON.stringify(sentMessages.slice(-10)));
+                        } catch (error) {
+                            console.log("Не удалось сохранить историю:", error);
+                        }
+                    } else {
+                        throw new Error("Ошибка отправки");
                     }
                 } else {
-                    throw new Error("Ошибка отправки");
+                    throw new Error("EmailJS не настроен");
                 }
             } catch (error) {
                 console.error("Ошибка отправки:", error);
@@ -2933,11 +2877,7 @@
                 );
                 
                 setTimeout(() => {
-                    if (isMobile) {
-                        window.location.href = mailtoLink;
-                    } else {
-                        window.location.href = mailtoLink;
-                    }
+                    window.location.href = mailtoLink;
                 }, 2000);
             } finally {
                 // Возвращаем кнопку в исходное состояние
@@ -3075,14 +3015,6 @@
                 menuToggle.classList.remove("active");
                 menuToggle.setAttribute("aria-expanded", "false");
                 document.body.style.overflow = '';
-                
-                // На мобильных добавляем небольшую задержку для плавности
-                if (isMobile && href.startsWith('#')) {
-                    e.preventDefault();
-                    setTimeout(() => {
-                        document.querySelector(href).scrollIntoView({ behavior: 'smooth' });
-                    }, 100);
-                }
             });
         });
 
@@ -3146,20 +3078,7 @@
             }, false);
             
             // Улучшаем feedback при касании
-            document.addEventListener('touchstart', function() {
-                // Добавляем активный класс при касании
-            }, { passive: true });
-            
-            // Улучшаем active состояния для кнопок
-            document.querySelectorAll('.btn, .project-link, .social-btn, nav a').forEach(el => {
-                el.addEventListener('touchstart', function() {
-                    this.classList.add('touch-active');
-                }, { passive: true });
-                
-                el.addEventListener('touchend', function() {
-                    this.classList.remove('touch-active');
-                }, { passive: true });
-            });
+            document.addEventListener('touchstart', function() {}, { passive: true });
         }
 
         // ========== ИНИЦИАЛИЗАЦИЯ ==========
