@@ -1503,10 +1503,10 @@
         }
 
         .contact-item {
-          flex-direction: column;
-          text-align: center;
+          flex-direction: row;
+          text-align: left;
           gap: 16px;
-          padding: 20px;
+          padding: 16px;
         }
 
         .contact-icon {
@@ -1515,7 +1515,8 @@
         }
 
         .contact-social {
-          justify-content: center;
+          justify-content: flex-start;
+          flex-wrap: wrap;
         }
 
         .social-btn {
