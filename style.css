@@ -1451,33 +1451,52 @@
         }
 
         .projects-grid {
-          grid-template-columns: 1fr;
+          display: flex;
+          flex-wrap: nowrap;
+          overflow-x: auto;
+          scroll-snap-type: x mandatory;
           gap: 16px;
           margin-top: 30px;
+          padding-bottom: 20px;
+          -webkit-overflow-scrolling: touch;
+          scrollbar-width: none; /* Firefox */
+        }
+
+        .projects-grid::-webkit-scrollbar {
+          display: none; /* Chrome/Safari */
         }
 
         .project-card {
-          padding: 24px;
+          flex: 0 0 85vw;
+          scroll-snap-align: center;
+          padding: 20px;
         }
 
         .project-icon {
-          width: 52px;
-          height: 52px;
-          margin-bottom: 16px;
+          width: 44px;
+          height: 44px;
+          margin-bottom: 12px;
         }
 
         .project-title {
-          font-size: 1.25rem;
+          font-size: 1.15rem;
         }
 
         .project-description {
-          font-size: 0.95rem;
-          line-height: 1.5;
+          font-size: 0.9rem;
+          line-height: 1.4;
         }
 
         .project-links {
-          flex-direction: column;
-          gap: 10px;
+          flex-direction: row;
+          flex-wrap: wrap;
+          gap: 8px;
+        }
+
+        .project-links .project-link {
+          flex: 1;
+          padding: 10px;
+          font-size: 13px;
         }
 
         .project-link {
