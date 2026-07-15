@@ -452,6 +452,8 @@
         overflow: hidden;
         position: relative;
         will-change: transform, box-shadow;
+        -webkit-mask-image: -webkit-radial-gradient(white, black);
+        transform: translateZ(0);
       }
 
       .glass-card::before {
