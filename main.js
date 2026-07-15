@@ -724,10 +724,15 @@
 
 // --- Dark Mode Logic ---
 const themeToggleBtn = document.getElementById('theme-toggle');
-const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
+// Default to dark theme if not set
+const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : 'dark';
 
-if (currentTheme) {
-    document.documentElement.setAttribute('data-theme', currentTheme);
+if (currentTheme === 'dark') {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    if (themeToggleBtn) themeToggleBtn.textContent = '☀️';
+} else {
+    document.documentElement.removeAttribute('data-theme');
+    if (themeToggleBtn) themeToggleBtn.textContent = '🌙';
 }
 
 if (themeToggleBtn) {
@@ -736,9 +741,11 @@ if (themeToggleBtn) {
         if (theme === 'dark') {
             document.documentElement.removeAttribute('data-theme');
             localStorage.setItem('theme', 'light');
+            themeToggleBtn.textContent = '🌙';
         } else {
             document.documentElement.setAttribute('data-theme', 'dark');
             localStorage.setItem('theme', 'dark');
+            themeToggleBtn.textContent = '☀️';
         }
     });
 }
@@ -840,10 +847,13 @@ const translations = {
         "about.skills.title": "Мои навыки",
         "contact.form.title": "Напишите мне",
         "contact.form.name": "Имя",
+        "contact.form.name.placeholder": "Введите ваше имя",
         "contact.form.name.error": "Пожалуйста, введите ваше имя (от 2 до 50 символов)",
         "contact.form.email": "Email",
+        "contact.form.email.placeholder": "ваш@email.com",
         "contact.form.email.error": "Пожалуйста, введите корректный email",
         "contact.form.msg": "Сообщение",
+        "contact.form.msg.placeholder": "Расскажите о вашем проекте или задайте вопрос...",
         "contact.form.msg.error": "Сообщение должно содержать от 10 до 1000 символов",
         "contact.form.submit": "Отправить сообщение",
         "contact.info.title": "Контактная информация",
@@ -883,7 +893,33 @@ const translations = {
         "project4.desc": "SPA for task management with drag & drop, local storage, and cross-device synchronization. Intuitive interface and advanced filters.",
         "projects.title": "My Projects",
         "about.title": "About Me",
-        "contact.title": "Contact"
+        "contact.title": "Contact",
+        "about.path.title": "My Path",
+        "about.path.p1": "I am a frontend developer creating modern, user-friendly, and visually clean web interfaces. I focus on responsive design, clean code, and clear project structure.",
+        "about.path.p2": "I enjoy building websites, interactive elements, and game mechanics using HTML, CSS, JavaScript, and Canvas. I also develop simple games and prototypes in Unity.",
+        "about.path.p3": "It's important to me that a product is not only beautiful but also convenient for the user, so I pay attention to small details, loading speed, and overall UX.",
+        "about.exp.title": "Experience",
+        "about.exp.1": "Creating SPAs and landing pages for businesses",
+        "about.exp.2": "Developing games on Unity and Canvas",
+        "about.exp.3": "UI/UX design and prototyping in Figma",
+        "about.exp.4": "Web application performance optimization",
+        "about.exp.5": "REST API and third-party services integration",
+        "about.skills.title": "My Skills",
+        "contact.form.title": "Drop me a message",
+        "contact.form.name": "Name",
+        "contact.form.name.placeholder": "Enter your name",
+        "contact.form.name.error": "Please enter your name (2-50 characters)",
+        "contact.form.email": "Email",
+        "contact.form.email.placeholder": "your@email.com",
+        "contact.form.email.error": "Please enter a valid email",
+        "contact.form.msg": "Message",
+        "contact.form.msg.placeholder": "Tell me about your project or ask a question...",
+        "contact.form.msg.error": "Message must be between 10 and 1000 characters",
+        "contact.form.submit": "Send Message",
+        "contact.info.title": "Contact Information",
+        "contact.info.location.label": "Location",
+        "contact.info.location": "Tashkent, Uzbekistan (Ready for remote work)",
+        "contact.info.email.label": "Email"
     }
 };
 
@@ -893,7 +929,11 @@ function applyTranslations(lang) {
     document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
         if (translations[lang] && translations[lang][key]) {
-            el.textContent = translations[lang][key];
+            if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                el.placeholder = translations[lang][key];
+            } else {
+                el.textContent = translations[lang][key];
+            }
         }
     });
     
