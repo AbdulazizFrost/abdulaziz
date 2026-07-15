@@ -1343,7 +1343,7 @@
           width: 85%;
           max-width: 320px;
           height: 100vh;
-          background: var(--bg-card);
+          background: var(--bg);
           backdrop-filter: var(--blur);
           border-left: 1px solid var(--glass-border-light);
           flex-direction: column;
