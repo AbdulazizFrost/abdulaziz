@@ -5,8 +5,8 @@
                 templateId: "template_wdordbj",
                 publicKey: "mLkxuD6fC19PM6EV1"
             },
-            resumeUrl: "https://drive.google.com/file/d/1YOUR_FILE_ID/view?usp=sharing",
-            resumeViewUrl: "https://drive.google.com/file/d/1YOUR_FILE_ID/view?usp=sharing",
+            resumeUrl: "resume.pdf",
+            resumeViewUrl: "resume.pdf",
             socialLinks: {
                 github: "https://github.com/AbdulazizFrost",
                 telegram: "https://t.me/Yandex_Games_GameDev",
