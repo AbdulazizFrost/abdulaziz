@@ -9,7 +9,7 @@
             resumeViewUrl: "resume.pdf",
             socialLinks: {
                 github: "https://github.com/AbdulazizFrost",
-                telegram: "https://t.me/Yandex_Games_GameDev",
+                telegram: "https://t.me/Abdulaziz5335",
                 linkedin: "https://www.linkedin.com/in/abdulaziz-sidiqov-53903a3a0/",
                 instagram: "https://instagram.com/YOUR_USERNAME"
             }
@@ -803,23 +803,91 @@ const langToggleBtn = document.getElementById('lang-toggle');
 const translations = {
     ru: {
         "filter.all": "Все",
-        "filter.unity": "Unity",
-        "filter.frontend": "Frontend",
+        "filter.bots": "Telegram-боты",
+        "filter.frontend": "Frontend & Сайты",
         "filter.js": "JavaScript",
+        "filter.unity": "Unity & Games",
         "filter.vue": "Vue",
         "nav.home": "Главная",
+        "nav.services": "Услуги и цены",
         "nav.projects": "Проекты",
         "nav.about": "Обо мне",
         "nav.contact": "Контакты",
-        "hero.badge": "👋 Добро пожаловать в моё портфолио",
-        "hero.title": "Создаю современные цифровые продукты",
-        "hero.subtitle": "Frontend Разработчик",
-        "hero.desc": "Создаю современные цифровые продукты с фокусом на UX/UI и производительность. Превращаю сложные идеи в элегантные решения.",
+        "hero.badge": "🚀 Разработка Telegram-ботов и сайтов для бизнеса",
+        "hero.title": "Создаю Telegram-ботов и сайты, которые приносят клиентов",
+        "hero.subtitle": "Web & Bot Developer",
+        "hero.desc": "Помогаю бизнесу автоматизировать прием заявок 24/7 и масштабировать продажи через умных Telegram-ботов и быстрые конверсионные сайты под ключ.",
+        "hero.btn.services": "Услуги и цены",
         "hero.btn.projects": "Мои проекты",
         "hero.btn.contact": "Связаться со мной",
+        "hero.stat.projects": "Завершенных задач",
+        "hero.stat.speed": "Сроки запуска",
+        "hero.stat.guarantee": "Гарантия результата",
+        "profile.title": "Web & Bot Developer",
+        "profile.desc": "Специализируюсь на создании Telegram-ботов для автоматизации бизнеса и современных продающих сайтов с высокой конверсией.",
+        "profile.btn.tg": "Заказать в Telegram",
+        "profile.btn.calc": "Рассчитать стоимость",
         "profile.btn.contact": "Связаться",
         "profile.btn.resume": "Скачать резюме",
+        "services.title": "Услуги и стоимость",
+        "services.subtitle": "Готовые решения для малого и среднего бизнеса. Фиксированные цены, понятные сроки и техническая поддержка.",
+        "services.tier1.badge": "Быстрый старт",
+        "services.tier1.title": "Telegram-боты для бизнеса",
+        "services.tier1.desc": "Автоматизация приема заявок, каталог товаров и запись клиентов 24/7 без зарплаты менеджеру.",
+        "services.tier1.sum": "/ ~850 000 сум",
+        "services.tier1.time": "Срок: 2–4 дня",
+        "services.tier1.f1": "Интерактивное меню и прайс-лист",
+        "services.tier1.f2": "Сбор заявок, номеров телефонов и имен",
+        "services.tier1.f3": "Мгновенные оповещения вам в Telegram",
+        "services.tier1.f4": "Интеграция с Google Таблицами / CRM",
+        "services.tier1.f5": "14 дней бесплатной поддержки",
+        "services.tier1.btn": "Заказать бота",
+        "services.tier2.badge": "Высокая конверсия",
+        "services.tier2.title": "Продающие сайты и Лендинги",
+        "services.tier2.desc": "Современный быстрый одностраничник под ключ для запуска рекламы в Instagram, Яндекс и Google.",
+        "services.tier2.sum": "/ ~1 200 000 сум",
+        "services.tier2.time": "Срок: 3–5 дней",
+        "services.tier2.f1": "Адаптивный дизайн (Смартфон / ПК)",
+        "services.tier2.f2": "Молниеносная скорость загрузки",
+        "services.tier2.f3": "Заявки с сайта прямо в Telegram / Email",
+        "services.tier2.f4": "Базовая SEO-оптимизация",
+        "services.tier2.f5": "Бесплатный хостинг и домен в подарок",
+        "services.tier2.btn": "Заказать сайт",
+        "services.tier3.popular": "🔥 ХИТ ПРОДАЖ (ВЫГОДА 25%)",
+        "services.tier3.badge": "Всё включено",
+        "services.tier3.title": "Комплект «Сайт + Бот под ключ»",
+        "services.tier3.desc": "Полная воронка продаж: продающий сайт для рекламы + Telegram-бот для автоматического закрытия сделок.",
+        "services.tier3.sum": "/ ~1 800 000 сум",
+        "services.tier3.time": "Срок: 5–7 дней",
+        "services.tier3.f1": "Полноценный продающий сайт",
+        "services.tier3.f2": "Telegram-бот автоответчик и сборщик лидов",
+        "services.tier3.f3": "Сквозная связка «Сайт ➔ Бот ➔ Уведомления»",
+        "services.tier3.f4": "Помощь с запуском первой рекламы",
+        "services.tier3.f5": "30 дней технического сопровождения",
+        "services.tier3.btn": "Заказать под ключ",
+        "calc.badge": "⚡ Интерактивный расчет",
+        "calc.title": "Калькулятор стоимости вашего проекта",
+        "calc.subtitle": "Выберите нужные опции и получите моментальный предварительный расчет",
+        "calc.type.title": "1. Что необходимо разработать?",
+        "calc.type.bot": "Telegram-бот",
+        "calc.type.bot.sub": "Автоматизация, меню, запись ($70)",
+        "calc.type.site": "Лендинг / Одностраничник",
+        "calc.type.site.sub": "Продающий сайт под ключ ($100)",
+        "calc.type.combo": "Комплект «Сайт + Бот»",
+        "calc.type.combo.sub": "Единая система со скидкой ($150)",
+        "calc.addons.title": "2. Дополнительные опции:",
+        "calc.opt.payment": "Онлайн-оплата (Click / Payme / Карты) (+$30)",
+        "calc.opt.crm": "Интеграция с CRM / Google Таблицами (+$25)",
+        "calc.opt.multilang": "Мультиязычность (Русский / O'zbek / English) (+$20)",
+        "calc.opt.fast": "Срочный запуск за 48 часов (+$35)",
+        "calc.result.label": "Ориентировочная стоимость:",
+        "calc.btn.order": "Отправить расчет в Telegram",
+        "calc.note": "* Точная стоимость фиксируется после согласования технического задания",
         "projects.title": "Мои проекты",
+        "projectBot.title": "Telegram-бот для бизнеса «Lead & Order»",
+        "projectBot.desc": "Автоматизированный Telegram-бот для онлайн-записи клиентов и приема заказов. Каталог услуг, FSM-сценарий сбора контактов, мгновенные уведомления администратору в личку.",
+        "projectBot.demo": "Демо в Telegram",
+        "projectBot.order": "Заказать такого",
         "about.title": "О себе",
         "contact.title": "Контакты",
         "project.demo": "Демо",
@@ -835,15 +903,15 @@ const translations = {
         "project4.title": "Приложение-планировщик",
         "project4.desc": "SPA для управления задачами с drag & drop, локальным хранилищем и синхронизацией между устройствами. Интуитивный интерфейс и расширенные фильтры.",
         "about.path.title": "Мой путь",
-        "about.path.p1": "Я — frontend-разработчик, который создаёт современные, удобные и визуально аккуратные веб-интерфейсы. В работе делаю упор на адаптивность, чистый код и понятную структуру проектов.",
-        "about.path.p2": "Мне нравится создавать сайты, интерактивные элементы и игровые механики с использованием HTML, CSS, JavaScript и Canvas. Также занимаюсь разработкой простых игр и прототипов в Unity.",
-        "about.path.p3": "Для меня важно, чтобы продукт был не только красивым, но и удобным для пользователя, поэтому уделяю внимание мелким деталям, скорости загрузки и общему UX.",
-        "about.exp.title": "Опыт работы",
-        "about.exp.1": "Создание SPA и лендингов для бизнеса",
-        "about.exp.2": "Разработка игровых проектов на Unity и Canvas",
-        "about.exp.3": "Дизайн и прототипирование интерфейсов в Figma",
-        "about.exp.4": "Оптимизация производительности веб-приложений",
-        "about.exp.5": "Интеграция с REST API и сторонними сервисами",
+        "about.path.p1": "Я — разработчик Telegram-ботов и веб-сайтов, создающий современные, конвертирующие и удобные решения для бизнеса. В работе делаю упор на скорость, надежность и увеличение продаж клиентов.",
+        "about.path.p2": "Разрабатываю ботов на Python (aiogram 3) и быстрые сайты с чистым кодом и современным UI. Превращаю рутинные процессы бизнеса в удобную автоматизацию.",
+        "about.path.p3": "Для меня важно, чтобы каждый проект приносил реальную пользу и прибыль заказчику, поэтому я сопровождаю проекты и после запуска.",
+        "about.exp.title": "Опыт и компетенции",
+        "about.exp.1": "Разработка Telegram-ботов (запись, каталоги, автоворонки, оплата)",
+        "about.exp.2": "Создание адаптивных продающих сайтов и лендингов для рекламы",
+        "about.exp.3": "Интеграция ботов с CRM, Google Таблицами и платежными системами",
+        "about.exp.4": "UI/UX дизайн интерфейсов и прототипирование в Figma",
+        "about.exp.5": "Оптимизация скорости загрузки (PageSpeed 95+) и базовое SEO",
         "about.skills.title": "Мои навыки",
         "contact.form.title": "Напишите мне",
         "contact.form.name": "Имя",
@@ -858,27 +926,99 @@ const translations = {
         "contact.form.submit": "Отправить сообщение",
         "contact.info.title": "Контактная информация",
         "contact.info.location.label": "Локация",
-        "contact.info.location": "Ташкент, Узбекистан (Готов к удаленной работе)",
-        "contact.info.email.label": "Email"
+        "contact.info.location": "Ташкент / Ургенч, Узбекистан (Готов к проектам по всему миру)",
+        "contact.info.email.label": "Email",
+        "footer.text": "Web & Telegram Bots Developer"
     },
     en: {
         "filter.all": "All",
-        "filter.unity": "Unity",
-        "filter.frontend": "Frontend",
+        "filter.bots": "Telegram Bots",
+        "filter.frontend": "Frontend & Websites",
         "filter.js": "JavaScript",
+        "filter.unity": "Unity & Games",
         "filter.vue": "Vue",
         "nav.home": "Home",
+        "nav.services": "Services & Pricing",
         "nav.projects": "Projects",
         "nav.about": "About",
         "nav.contact": "Contact",
-        "hero.badge": "👋 Welcome to my portfolio",
-        "hero.title": "Building modern digital products",
-        "hero.subtitle": "Frontend Developer",
-        "hero.desc": "Creating modern digital products focusing on UX/UI and performance. Turning complex ideas into elegant solutions.",
+        "hero.badge": "🚀 Custom Telegram Bots & Websites for Business",
+        "hero.title": "Building Telegram Bots & High-Converting Websites",
+        "hero.subtitle": "Web & Bot Developer",
+        "hero.desc": "Helping businesses automate lead capture 24/7 and scale revenue through smart Telegram bots and high-converting modern websites.",
+        "hero.btn.services": "Services & Pricing",
         "hero.btn.projects": "My Projects",
         "hero.btn.contact": "Contact Me",
+        "hero.stat.projects": "Completed Tasks",
+        "hero.stat.speed": "Fast Delivery",
+        "hero.stat.guarantee": "Result Guarantee",
+        "profile.title": "Web & Bot Developer",
+        "profile.desc": "Specializing in building Telegram bots for business automation and modern high-converting websites.",
+        "profile.btn.tg": "Order in Telegram",
+        "profile.btn.calc": "Calculate Price",
         "profile.btn.contact": "Contact",
         "profile.btn.resume": "Download Resume",
+        "services.title": "Services & Pricing",
+        "services.subtitle": "Turnkey solutions for small and medium businesses. Transparent pricing, clear deadlines, and technical support.",
+        "services.tier1.badge": "Quick Start",
+        "services.tier1.title": "Telegram Bots for Business",
+        "services.tier1.desc": "Automated order taking, product catalog, and 24/7 appointment booking without paying extra staff.",
+        "services.tier1.sum": "/ ~$70 USD",
+        "services.tier1.time": "Timeframe: 2–4 days",
+        "services.tier1.f1": "Interactive menu and price list",
+        "services.tier1.f2": "Lead capture, phone numbers, and names",
+        "services.tier1.f3": "Instant notifications directly to your Telegram",
+        "services.tier1.f4": "Google Sheets / CRM integration",
+        "services.tier1.f5": "14 days of free warranty support",
+        "services.tier1.btn": "Order Telegram Bot",
+        "services.tier2.badge": "High Conversion",
+        "services.tier2.title": "Landing Pages & Websites",
+        "services.tier2.desc": "Modern, fast turnkey landing pages designed to convert ads from Instagram, Google, and Yandex.",
+        "services.tier2.sum": "/ ~$100 USD",
+        "services.tier2.time": "Timeframe: 3–5 days",
+        "services.tier2.f1": "Responsive design (Mobile & Desktop)",
+        "services.tier2.f2": "Lightning fast loading speed",
+        "services.tier2.f3": "Direct lead forwarding to Telegram / Email",
+        "services.tier2.f4": "Basic SEO optimization",
+        "services.tier2.f5": "Free hosting and domain setup",
+        "services.tier2.btn": "Order Website",
+        "services.tier3.popular": "🔥 BESTSELLER (SAVE 25%)",
+        "services.tier3.badge": "All Inclusive",
+        "services.tier3.title": "Bundle «Website + Telegram Bot»",
+        "services.tier3.desc": "Complete sales funnel: high-converting landing page for ads + smart Telegram bot to close deals automatically.",
+        "services.tier3.sum": "/ ~$150 USD",
+        "services.tier3.time": "Timeframe: 5–7 days",
+        "services.tier3.f1": "Full-featured commercial landing page",
+        "services.tier3.f2": "Telegram bot auto-responder & lead collector",
+        "services.tier3.f3": "Seamless integration: Web ➔ Bot ➔ Notifications",
+        "services.tier3.f4": "Assistance setting up initial advertising",
+        "services.tier3.f5": "30 days of free ongoing support",
+        "services.tier3.btn": "Order Turnkey Bundle",
+        "calc.badge": "⚡ Interactive Estimator",
+        "calc.title": "Project Price Calculator",
+        "calc.subtitle": "Select your requirements and get an instant transparent quote",
+        "calc.type.title": "1. What do you need built?",
+        "calc.type.bot": "Telegram Bot",
+        "calc.type.bot.sub": "Automation, menu, bookings ($70)",
+        "calc.type.site": "Landing Page / Website",
+        "calc.type.site.sub": "High-converting site ($100)",
+        "calc.type.combo": "Bundle «Website + Bot»",
+        "calc.type.combo.sub": "Unified sales system ($150)",
+        "calc.addons.title": "2. Extra Features:",
+        "calc.opt.payment": "Online Payments (Click / Payme / Stripe) (+$30)",
+        "calc.opt.crm": "CRM / Google Sheets Integration (+$25)",
+        "calc.opt.multilang": "Multi-language support (RU / UZ / EN) (+$20)",
+        "calc.opt.fast": "Express Delivery in 48h (+$35)",
+        "calc.result.label": "Estimated Cost:",
+        "calc.btn.order": "Send Quote to Telegram",
+        "calc.note": "* Exact pricing is finalized after brief review",
+        "projects.title": "My Projects",
+        "projectBot.title": "Business Telegram Bot «Lead & Order»",
+        "projectBot.desc": "Automated Telegram bot for appointment booking and service orders. Product catalog, FSM lead capture, and instant notifications to admin.",
+        "projectBot.demo": "Demo in Telegram",
+        "projectBot.order": "Order Similar",
+        "about.title": "About Me",
+        "contact.title": "Contact",
         "project.demo": "Demo",
         "project.code": "Code on GitHub",
         "project.demo.this": "Demo (this site)",
@@ -891,19 +1031,16 @@ const translations = {
         "project3.desc": "Arcade game using HTML5 Canvas. Dynamic physics, scoring system, multiple difficulty levels, and high scores.",
         "project4.title": "Task Planner App",
         "project4.desc": "SPA for task management with drag & drop, local storage, and cross-device synchronization. Intuitive interface and advanced filters.",
-        "projects.title": "My Projects",
-        "about.title": "About Me",
-        "contact.title": "Contact",
         "about.path.title": "My Path",
-        "about.path.p1": "I am a frontend developer creating modern, user-friendly, and visually clean web interfaces. I focus on responsive design, clean code, and clear project structure.",
-        "about.path.p2": "I enjoy building websites, interactive elements, and game mechanics using HTML, CSS, JavaScript, and Canvas. I also develop simple games and prototypes in Unity.",
-        "about.path.p3": "It's important to me that a product is not only beautiful but also convenient for the user, so I pay attention to small details, loading speed, and overall UX.",
-        "about.exp.title": "Experience",
-        "about.exp.1": "Creating SPAs and landing pages for businesses",
-        "about.exp.2": "Developing games on Unity and Canvas",
-        "about.exp.3": "UI/UX design and prototyping in Figma",
-        "about.exp.4": "Web application performance optimization",
-        "about.exp.5": "REST API and third-party services integration",
+        "about.path.p1": "I am a web and Telegram bot developer delivering modern, high-converting digital solutions for business. I focus on speed, reliability, and growing customer revenue.",
+        "about.path.p2": "I develop robust bots using Python (aiogram 3) and clean, responsive websites. I turn repetitive business chores into effortless automation.",
+        "about.path.p3": "Every project should bring real tangible ROI to my clients, which is why I provide continued post-launch support.",
+        "about.exp.title": "Core Skills & Experience",
+        "about.exp.1": "Custom Telegram bots (bookings, catalogs, funnels, payments)",
+        "about.exp.2": "High-converting responsive landing pages for online ads",
+        "about.exp.3": "Integrations with CRM, Google Sheets, and payment gateways",
+        "about.exp.4": "UI/UX interface prototyping in Figma",
+        "about.exp.5": "Performance optimization (PageSpeed 95+) and foundational SEO",
         "about.skills.title": "My Skills",
         "contact.form.title": "Drop me a message",
         "contact.form.name": "Name",
@@ -918,8 +1055,9 @@ const translations = {
         "contact.form.submit": "Send Message",
         "contact.info.title": "Contact Information",
         "contact.info.location.label": "Location",
-        "contact.info.location": "Tashkent, Uzbekistan (Ready for remote work)",
-        "contact.info.email.label": "Email"
+        "contact.info.location": "Tashkent / Urgench, Uzbekistan (Worldwide Remote)",
+        "contact.info.email.label": "Email",
+        "footer.text": "Web & Telegram Bots Developer"
     }
 };
 
@@ -949,5 +1087,91 @@ if (langToggleBtn) {
         currentLang = currentLang === 'ru' ? 'en' : 'ru';
         localStorage.setItem('lang', currentLang);
         applyTranslations(currentLang);
+        updateCalculator();
     });
-}
+}
+
+// ====================================================
+// INTERACTIVE PRICE CALCULATOR LOGIC
+// ====================================================
+function initCalculator() {
+    const radioInputs = document.querySelectorAll('input[name="projectType"]');
+    const checkboxInputs = document.querySelectorAll('.calc-checkbox-group input[type="checkbox"]');
+    const priceUsdEl = document.getElementById('calcPriceUSD');
+    const priceUzsEl = document.getElementById('calcPriceUZS');
+    const timeEl = document.getElementById('calcTime');
+    const tgBtn = document.getElementById('calcTelegramBtn');
+
+    if (!priceUsdEl || !tgBtn) return;
+
+    function updateCalculator() {
+        let basePrice = 70;
+        let projectTitle = "Telegram-бот";
+        let days = "2–4 дня";
+
+        const selectedRadio = document.querySelector('input[name="projectType"]:checked');
+        if (selectedRadio) {
+            if (selectedRadio.value === 'bot') {
+                basePrice = 70;
+                projectTitle = currentLang === 'ru' ? "Telegram-бот для бизнеса" : "Business Telegram Bot";
+                days = currentLang === 'ru' ? "Срок: 2–3 дня" : "Time: 2–3 days";
+            } else if (selectedRadio.value === 'site') {
+                basePrice = 100;
+                projectTitle = currentLang === 'ru' ? "Продающий сайт-лендинг" : "Landing Page";
+                days = currentLang === 'ru' ? "Срок: 3–5 дней" : "Time: 3–5 days";
+            } else if (selectedRadio.value === 'combo') {
+                basePrice = 150;
+                projectTitle = currentLang === 'ru' ? "Комплект «Сайт + Telegram-бот»" : "Bundle «Website + Telegram Bot»";
+                days = currentLang === 'ru' ? "Срок: 5–7 дней" : "Time: 5–7 days";
+            }
+        }
+
+        let extraTotal = 0;
+        let selectedAddons = [];
+
+        checkboxInputs.forEach(cb => {
+            if (cb.checked) {
+                const val = parseInt(cb.value, 10) || 0;
+                extraTotal += val;
+                const parentLabel = cb.closest('label');
+                if (parentLabel) {
+                    const text = parentLabel.querySelector('span:last-child')?.textContent.trim();
+                    if (text) selectedAddons.push(text);
+                }
+            }
+        });
+
+        const fastCheckbox = document.getElementById('opt-fast');
+        if (fastCheckbox && fastCheckbox.checked) {
+            days = currentLang === 'ru' ? "Срочно: 24–48 часов ⚡" : "Express: 24–48 hours ⚡";
+        }
+
+        const totalPriceUSD = basePrice + extraTotal;
+        const uzsRate = 12600; // примерный курс
+        const totalPriceUZS = Math.round((totalPriceUSD * uzsRate) / 50000) * 50000;
+        const formattedUZS = totalPriceUZS.toLocaleString('ru-RU');
+
+        priceUsdEl.textContent = `$${totalPriceUSD}`;
+        priceUzsEl.textContent = `~ ${formattedUZS} сум`;
+        timeEl.innerHTML = `<i class="far fa-clock"></i> ${days}`;
+
+        // Формирование ссылки в Telegram с готовым текстом
+        let messageText = `Здравствуйте, Абдулазиз! Я рассчитал проект на вашем сайте:\n\n`;
+        messageText += `🔹 Услуга: ${projectTitle}\n`;
+        if (selectedAddons.length > 0) {
+            messageText += `🔹 Доп. опции:\n - ${selectedAddons.join('\n - ')}\n`;
+        }
+        messageText += `🔹 Ориентир по бюджету: $${totalPriceUSD} (~${formattedUZS} сум)\n`;
+        messageText += `\nХочу обсудить детали и запустить проект!`;
+
+        const encodedMsg = encodeURIComponent(messageText);
+        tgBtn.href = `https://t.me/Abdulaziz5335?text=${encodedMsg}`;
+    }
+
+    radioInputs.forEach(r => r.addEventListener('change', updateCalculator));
+    checkboxInputs.forEach(c => c.addEventListener('change', updateCalculator));
+
+    updateCalculator();
+}
+
+initCalculator();
