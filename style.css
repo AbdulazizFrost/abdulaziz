@@ -112,7 +112,8 @@
         transition: var(--transition-smooth);
       }
 
-      .reveal.visible {
+      .reveal.visible,
+      #home .reveal {
         opacity: 1;
         transform: translateY(0);
       }

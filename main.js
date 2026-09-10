@@ -188,126 +188,122 @@
 
         // ========== ОБРАБОТЧИКИ СОБЫТИЙ ==========
 
+        // Безопасное добавление обработчиков событий
+        function safeAddEvent(id, event, handler) {
+            const el = document.getElementById(id);
+            if (el) el.addEventListener(event, handler);
+        }
+
         // 1. Кнопка скачивания резюме
-        document.getElementById("resumeBtn").addEventListener("click", function(e) {
+        safeAddEvent("resumeBtn", "click", function(e) {
             e.preventDefault();
-            resumeModal.classList.add("active");
-            resumeModal.setAttribute("aria-hidden", "false");
-            document.getElementById("modalClose").focus();
-            
-            // Добавляем обработчик клавиатуры для модального окна
-            if (isMobile) {
-                document.activeElement.blur();
+            if (resumeModal) {
+                resumeModal.classList.add("active");
+                resumeModal.setAttribute("aria-hidden", "false");
+                const closeBtn = document.getElementById("modalClose");
+                if (closeBtn) closeBtn.focus();
+                if (isMobile) document.activeElement.blur();
             }
         });
 
         // Закрытие модального окна
-        document.getElementById("modalClose").addEventListener("click", function() {
-            resumeModal.classList.remove("active");
-            resumeModal.setAttribute("aria-hidden", "true");
-        });
-
-        // Закрытие модального окна при клике вне его
-        resumeModal.addEventListener("click", function(e) {
-            if (e.target === this) {
-                this.classList.remove("active");
-                this.setAttribute("aria-hidden", "true");
+        safeAddEvent("modalClose", "click", function() {
+            if (resumeModal) {
+                resumeModal.classList.remove("active");
+                resumeModal.setAttribute("aria-hidden", "true");
             }
         });
 
+        // Закрытие модального окна при клике вне его
+        if (resumeModal) {
+            resumeModal.addEventListener("click", function(e) {
+                if (e.target === this) {
+                    this.classList.remove("active");
+                    this.setAttribute("aria-hidden", "true");
+                }
+            });
+        }
+
         // Закрытие модального окна по Escape
         document.addEventListener("keydown", function(e) {
-            if (e.key === "Escape" && resumeModal.classList.contains("active")) {
+            if (e.key === "Escape" && resumeModal && resumeModal.classList.contains("active")) {
                 resumeModal.classList.remove("active");
                 resumeModal.setAttribute("aria-hidden", "true");
             }
         });
 
         // Скачивание резюме
-        document.getElementById("downloadResume").addEventListener("click", function(e) {
+        safeAddEvent("downloadResume", "click", function(e) {
             e.preventDefault();
-            
             if (config.resumeUrl.includes("YOUR_FILE_ID")) {
                 showNotification("error", "Ошибка", "Ссылка на резюме не настроена. Пожалуйста, запросите резюме по email.");
                 return;
             }
-            
             showNotification("success", "Скачивание началось", "Резюме скачивается...");
-            
-            // Открываем ссылку для скачивания
             if (isMobile) {
                 window.location.href = config.resumeUrl;
             } else {
                 window.open(config.resumeUrl, "_blank");
             }
-            
-            // Закрываем модальное окно
             setTimeout(() => {
-                resumeModal.classList.remove("active");
-                resumeModal.setAttribute("aria-hidden", "true");
+                if (resumeModal) {
+                    resumeModal.classList.remove("active");
+                    resumeModal.setAttribute("aria-hidden", "true");
+                }
             }, 500);
         });
 
         // Просмотр резюме онлайн
-        document.getElementById("viewResume").addEventListener("click", function(e) {
+        safeAddEvent("viewResume", "click", function(e) {
             e.preventDefault();
-            
             if (config.resumeViewUrl.includes("YOUR_FILE_ID")) {
                 showNotification("error", "Ошибка", "Ссылка на резюме не настроена. Пожалуйста, запросите резюме по email.");
                 return;
             }
-            
             if (isMobile) {
                 window.location.href = config.resumeViewUrl;
             } else {
                 window.open(config.resumeViewUrl, "_blank");
             }
-            
-            resumeModal.classList.remove("active");
-            resumeModal.setAttribute("aria-hidden", "true");
+            if (resumeModal) {
+                resumeModal.classList.remove("active");
+                resumeModal.setAttribute("aria-hidden", "true");
+            }
         });
 
         // 2. Кнопки проектов
         function setupProjectButtons() {
-            // Проект 1
-            document.getElementById("project1Demo").addEventListener("click", function(e) {
+            safeAddEvent("project1Demo", "click", function(e) {
                 e.preventDefault();
                 if (this.classList.contains("disabled")) {
-                    showNotification(
-                        "info", 
-                        "В разработке", 
-                        "Демо этого проекта будет доступно в ближайшее время!"
-                    );
+                    showNotification("info", "В разработке", "Демо этого проекта будет доступно в ближайшее время!");
                 } else {
                     window.open(this.href, "_blank");
                 }
             });
             
-            document.getElementById("project1Code").addEventListener("click", function(e) {
+            safeAddEvent("project1Code", "click", function(e) {
                 e.preventDefault();
                 window.open(this.href, "_blank");
             });
 
-            // Проект 2
-            document.getElementById("project2Demo").addEventListener("click", function(e) {
+            safeAddEvent("project2Demo", "click", function(e) {
                 e.preventDefault();
-                // Плавная прокрутка к началу
-                document.querySelector('#home').scrollIntoView({ behavior: 'smooth' });
+                const homeEl = document.querySelector('#home');
+                if (homeEl) homeEl.scrollIntoView({ behavior: 'smooth' });
             });
             
-            document.getElementById("project2Code").addEventListener("click", function(e) {
+            safeAddEvent("project2Code", "click", function(e) {
                 e.preventDefault();
                 window.open(this.href, "_blank");
             });
 
-            // Проект 3
-            document.getElementById("project3Code").addEventListener("click", function(e) {
+            safeAddEvent("project3Code", "click", function(e) {
                 e.preventDefault();
                 window.open(this.href, "_blank");
             });
 
-            // Проект 4
-            document.getElementById("project4Code").addEventListener("click", function(e) {
+            safeAddEvent("project4Code", "click", function(e) {
                 e.preventDefault();
                 window.open(this.href, "_blank");
             });
@@ -315,39 +311,37 @@
 
         // 3. Социальные кнопки
         function setupSocialButtons() {
-            // Кнопки в контактах
-            document.getElementById("telegramBtn").addEventListener("click", function(e) {
+            safeAddEvent("telegramBtn", "click", function(e) {
                 e.preventDefault();
                 window.open(this.href, "_blank");
             });
             
-            document.getElementById("githubBtn").addEventListener("click", function(e) {
+            safeAddEvent("githubBtn", "click", function(e) {
                 e.preventDefault();
                 window.open(this.href, "_blank");
             });
             
-            document.getElementById("linkedinBtn").addEventListener("click", function(e) {
+            safeAddEvent("linkedinBtn", "click", function(e) {
                 e.preventDefault();
                 window.open(this.href, "_blank");
             });
 
-            // Кнопки в футере
-            document.getElementById("footerGithub").addEventListener("click", function(e) {
+            safeAddEvent("footerGithub", "click", function(e) {
                 e.preventDefault();
                 window.open(this.href, "_blank");
             });
             
-            document.getElementById("footerTelegram").addEventListener("click", function(e) {
+            safeAddEvent("footerTelegram", "click", function(e) {
                 e.preventDefault();
                 window.open(this.href, "_blank");
             });
             
-            document.getElementById("footerLinkedin").addEventListener("click", function(e) {
+            safeAddEvent("footerLinkedin", "click", function(e) {
                 e.preventDefault();
                 window.open(this.href, "_blank");
             });
             
-            document.getElementById("footerInstagram").addEventListener("click", function(e) {
+            safeAddEvent("footerInstagram", "click", function(e) {
                 e.preventDefault();
                 if (config.socialLinks.instagram.includes("YOUR_USERNAME")) {
                     showNotification("error", "Instagram не настроен", "Пожалуйста, настройте ссылку на Instagram в конфигурации");
@@ -520,6 +514,10 @@
 
         document.querySelectorAll(".reveal, .skill-progress").forEach((el) => {
             observer.observe(el);
+            const rect = el.getBoundingClientRect();
+            if (rect.top < window.innerHeight && rect.bottom > 0) {
+                el.classList.add("visible");
+            }
         });
 
         // Прогресс прокрутки
