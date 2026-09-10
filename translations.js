@@ -1,4 +1,4 @@
-﻿// translations.js - Полная многоязычность (RU / EN) для портфолио и страницы услуг
+// translations.js - Полная многоязычность (RU / EN) для портфолио и страницы услуг
 
 const translations = {
     ru: {
@@ -137,7 +137,9 @@ const translations = {
         "calc.result.title": "Итоговый расчет",
         "calc.result.approx": "Ориентировочная стоимость:",
         "calc.btn.discuss": "Обсудить проект в Telegram",
+        "calc.btn.fiverr": "Заказать через Fiverr (Безопасная сделка / Escrow)",
         "calc.btn.note": "Нажатие откроет диалог в Telegram с уже заполненными параметрами заказа",
+        "services.trust.badge": "🛡️ Безопасная сделка: принимаем оплату напрямую или через биржу Fiverr со 100% защитой покупателя",
 
         // FAQ
         "faq.title": "Часто задаваемые вопросы",
@@ -145,7 +147,7 @@ const translations = {
         "faq.q1": "Сколько времени занимает разработка?",
         "faq.a1": "Простой бот или лендинг создается за 2–3 дня. Комплексные решения (сайт + бот) обычно занимают от 5 до 7 дней. Если проект срочный, возможен запуск за 24–48 часов.",
         "faq.q2": "Как происходит оплата?",
-        "faq.a2": "Работаем по безопасной схеме: предоплата 30–50% перед стартом, остаток — после демонстрации готового работающего решения и вашего утверждения. Оплата возможна на карту (Uzcard/Humo), Payme/Click или криптовалютой.",
+        "faq.a2": "Работаем по безопасной схеме: предоплата 30–50% перед стартом, остаток — после демонстрации решения. Оплата возможна на карту (Uzcard/Humo), Payme/Click, криптовалютой или через безопасную сделку на бирже Fiverr (Buyer Protection).",
         "faq.q3": "Будет ли бот и сайт работать без перебоев?",
         "faq.a3": "Да. Ботов я размещаю на стабильных облачных серверах (uptime 99.9%), а сайты — на быстрых CDN-платформах. Вы получаете гарантию и бесплатную техподдержку после запуска.",
         "faq.q4": "Что нужно от меня для начала работы?",
@@ -297,7 +299,9 @@ const translations = {
         "calc.result.title": "Estimated Total",
         "calc.result.approx": "Estimated Investment:",
         "calc.btn.discuss": "Discuss Project in Telegram",
+        "calc.btn.fiverr": "Order on Fiverr (Buyer Protection / Escrow)",
         "calc.btn.note": "Clicking opens Telegram with your pre-filled project details",
+        "services.trust.badge": "🛡️ 100% Secure: Direct milestone payments or secure Fiverr Escrow with Buyer Protection",
 
         // FAQ
         "faq.title": "Frequently Asked Questions",
@@ -305,7 +309,7 @@ const translations = {
         "faq.q1": "How long does development take?",
         "faq.a1": "A simple bot or landing page takes 2–3 days. Comprehensive bundles (site + bot) typically take 5 to 7 days. Rush delivery (24–48 hours) is also available.",
         "faq.q2": "How does payment work?",
-        "faq.a2": "We work with a safe structure: 30–50% deposit before start, remainder upon demo and approval. Payments accepted via card (Uzcard/Humo), Payme/Click, or crypto/USDT.",
+        "faq.a2": "We offer safe payment options: direct milestone payments (card / bank / crypto USDT), or a 100% protected escrow contract on Fiverr with Buyer Protection and Credit Card/PayPal support.",
         "faq.q3": "Will the bot and site run reliably?",
         "faq.a3": "Yes. Bots are deployed on dependable cloud servers (99.9% uptime), and websites on ultra-fast CDNs. You receive warranty and free technical support after launch.",
         "faq.q4": "What is needed from me to get started?",
