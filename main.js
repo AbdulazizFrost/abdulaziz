@@ -449,46 +449,62 @@
             }
         });
 
-        // ========== АНИМАЦИИ И ЭФФЕКТЫ ==========
+        // ========== АНИМАЦИИ И ЭФФЕКТЫ (HIGH-PERFORMANCE) ==========
 
-        // Эффект параллакса (только для десктопов)
+        // Следящий за курсором элемент и параллакс (только для десктопов с rAF и translate3d)
         if (!isMobile) {
-            document.addEventListener("mousemove", function(e) {
-                const parallaxElements = document.querySelectorAll(".parallax-element");
-                const x = e.clientX / window.innerWidth;
-                const y = e.clientY / window.innerHeight;
+            const parallaxElements = document.querySelectorAll(".parallax-element");
+            let mouseX = 0, mouseY = 0;
+            let isHovered = false;
+            let rafScheduled = false;
 
-                parallaxElements.forEach((el) => {
-                    const speed = 0.05;
-                    const xMove = (x - 0.5) * speed * 100;
-                    const yMove = (y - 0.5) * speed * 100;
-
-                    el.style.transform = `translate(${xMove}px, ${yMove}px)`;
-                });
-            });
-        }
-
-        // Следящий за курсором элемент (только для десктопов)
-        if (!isMobile && cursorFollower) {
             document.addEventListener("mousemove", (e) => {
-                cursorFollower.style.left = e.clientX + "px";
-                cursorFollower.style.top = e.clientY + "px";
-            });
+                mouseX = e.clientX;
+                mouseY = e.clientY;
 
-            // Эффект при наведении на интерактивные элементы
-            const interactiveElements = document.querySelectorAll("a, button, .glass-card, .project-link, .social-btn");
-            
-            interactiveElements.forEach((el) => {
-                el.addEventListener("mouseenter", () => {
-                    cursorFollower.style.transform = "scale(2)";
-                    cursorFollower.style.background = "rgba(102, 126, 234, 0.1)";
-                });
+                if (!rafScheduled) {
+                    rafScheduled = true;
+                    requestAnimationFrame(() => {
+                        // Обновляем курсор через translate3d (GPU-композитинг без reflow)
+                        if (cursorFollower) {
+                            const scaleStr = isHovered ? " scale(1.8)" : " scale(1)";
+                            cursorFollower.style.transform = `translate3d(${mouseX - 10}px, ${mouseY - 10}px, 0)${scaleStr}`;
+                        }
 
-                el.addEventListener("mouseleave", () => {
-                    cursorFollower.style.transform = "scale(1)";
-                    cursorFollower.style.background = "rgba(102, 126, 234, 0.2)";
-                });
-            });
+                        // Обновляем параллакс
+                        if (parallaxElements.length > 0) {
+                            const normX = mouseX / window.innerWidth;
+                            const normY = mouseY / window.innerHeight;
+                            const speed = 0.05;
+                            const xMove = (normX - 0.5) * speed * 100;
+                            const yMove = (normY - 0.5) * speed * 100;
+
+                            parallaxElements.forEach((el) => {
+                                el.style.transform = `translate3d(${xMove}px, ${yMove}px, 0)`;
+                            });
+                        }
+
+                        rafScheduled = false;
+                    });
+                }
+            }, { passive: true });
+
+            if (cursorFollower) {
+                // Делегирование событий наведения для максимальной производительности
+                document.addEventListener("mouseover", (e) => {
+                    if (e.target.closest("a, button, .glass-card, .pricing-card, .calc-card, .project-link, .social-btn")) {
+                        isHovered = true;
+                        cursorFollower.style.background = "rgba(102, 126, 234, 0.12)";
+                    }
+                }, { passive: true });
+
+                document.addEventListener("mouseout", (e) => {
+                    if (e.target.closest("a, button, .glass-card, .pricing-card, .calc-card, .project-link, .social-btn")) {
+                        isHovered = false;
+                        cursorFollower.style.background = "rgba(102, 126, 234, 0.2)";
+                    }
+                }, { passive: true });
+            }
         }
 
         // Анимация появления элементов при скролле
@@ -520,42 +536,57 @@
             }
         });
 
-        // Прогресс прокрутки
+        // Оптимизированный прогресс прокрутки и навигация через requestAnimationFrame
+        const headerEl = document.querySelector(".header-container");
+        const sectionsList = document.querySelectorAll("section[id]");
+        const navAnchorList = document.querySelectorAll("nav a");
+        let scrollScheduled = false;
+
         window.addEventListener("scroll", () => {
-            const windowHeight =
-                document.documentElement.scrollHeight -
-                document.documentElement.clientHeight;
-            const scrolled = (window.scrollY / windowHeight) * 100;
-            scrollProgress.style.width = scrolled + "%";
+            if (!scrollScheduled) {
+                scrollScheduled = true;
+                requestAnimationFrame(() => {
+                    const scrollPos = window.scrollY;
+                    const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                    
+                    if (scrollProgress && docHeight > 0) {
+                        scrollProgress.style.width = (scrollPos / docHeight) * 100 + "%";
+                    }
 
-            // Эффект для хедера при прокрутке
-            const header = document.querySelector(".header-container");
-            if (window.scrollY > 50) {
-                header.classList.add("scrolled");
-            } else {
-                header.classList.remove("scrolled");
+                    // Эффект для хедера при прокрутке
+                    if (headerEl) {
+                        if (scrollPos > 50) {
+                            headerEl.classList.add("scrolled");
+                        } else {
+                            headerEl.classList.remove("scrolled");
+                        }
+                    }
+
+                    // Активное состояние навигации
+                    if (sectionsList.length > 0 && navAnchorList.length > 0) {
+                        let currentId = "";
+                        sectionsList.forEach((section) => {
+                            if (scrollPos >= section.offsetTop - 200) {
+                                currentId = section.getAttribute("id");
+                            }
+                        });
+
+                        navAnchorList.forEach((link) => {
+                            const href = link.getAttribute("href");
+                            if (href && href.startsWith("#")) {
+                                if (href.substring(1) === currentId) {
+                                    link.classList.add("active");
+                                } else {
+                                    link.classList.remove("active");
+                                }
+                            }
+                        });
+                    }
+
+                    scrollScheduled = false;
+                });
             }
-
-            // Активное состояние навигации
-            const sections = document.querySelectorAll("section");
-            const navLinks = document.querySelectorAll("nav a");
-
-            let current = "";
-            sections.forEach((section) => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                if (scrollY >= sectionTop - 200) {
-                    current = section.getAttribute("id");
-                }
-            });
-
-            navLinks.forEach((link) => {
-                link.classList.remove("active");
-                if (link.getAttribute("href").substring(1) === current) {
-                    link.classList.add("active");
-                }
-            });
-        });
+        }, { passive: true });
 
         // Мобильное меню
         menuToggle.addEventListener("click", () => {

@@ -9,22 +9,23 @@ if (canvas) {
     // Отключаем сглаживание на мобильных для экономии ресурсов
     const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: !isMobileDevice });
     
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, isMobileDevice ? 1.5 : 2)); // Ограничиваем Pixel Ratio
+    // Ограничиваем Pixel Ratio до 1.2 для максимальной плавности без потери четкости
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.2));
     renderer.setSize(window.innerWidth, window.innerHeight);
     camera.position.setZ(30);
     
-    // Geometry - Abstract torus wireframe. Уменьшаем количество полигонов для телефонов.
-    const torusRadialSegments = isMobileDevice ? 10 : 16;
-    const torusTubularSegments = isMobileDevice ? 50 : 100;
+    // Geometry - Оптимизированный тор без избыточных полигонов
+    const torusRadialSegments = isMobileDevice ? 8 : 12;
+    const torusTubularSegments = isMobileDevice ? 32 : 48;
     const geometry = new THREE.TorusGeometry(10, 3, torusRadialSegments, torusTubularSegments);
     const material = new THREE.MeshBasicMaterial({ color: 0x7f9cf5, wireframe: true, transparent: true, opacity: 0.2 });
     const torus = new THREE.Mesh(geometry, material);
     
     scene.add(torus);
     
-    // Particles - Меньше частиц на смартфонах
+    // Particles - Оптимальное количество частиц (250 вместо 700)
     const particlesGeometry = new THREE.BufferGeometry();
-    const particlesCount = isMobileDevice ? 200 : 700;
+    const particlesCount = isMobileDevice ? 100 : 250;
     const posArray = new Float32Array(particlesCount * 3);
     
     for(let i = 0; i < particlesCount * 3; i++) {
@@ -42,45 +43,61 @@ if (canvas) {
     const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
     scene.add(particlesMesh);
     
-    // Mouse interaction
-    let mouseX = 0;
-    let mouseY = 0;
+    // Mouse interaction с throttle
+    let targetMouseX = 0;
+    let targetMouseY = 0;
     
     if (!isMobileDevice) {
-        document.addEventListener('mousemove', (event) => {
-            mouseX = event.clientX / window.innerWidth - 0.5;
-            mouseY = event.clientY / window.innerHeight - 0.5;
-        });
+        window.addEventListener('mousemove', (event) => {
+            targetMouseX = event.clientX / window.innerWidth - 0.5;
+            targetMouseY = event.clientY / window.innerHeight - 0.5;
+        }, { passive: true });
     }
     
     const clock = new THREE.Clock();
     let isVisible = true;
 
-    // Умная пауза анимации: останавливаем 3D рендер, когда секция Hero не видна на экране
-    const heroSection = document.getElementById('home');
-    if (heroSection) {
+    // Умная пауза анимации: останавливаем 3D рендер, когда верхняя секция не видна
+    const heroSection = document.getElementById('home') || document.querySelector('.services-page-hero');
+    if (heroSection && 'IntersectionObserver' in window) {
         const observer = new IntersectionObserver((entries) => {
             isVisible = entries[0].isIntersecting;
         }, { threshold: 0 });
         observer.observe(heroSection);
+    } else {
+        window.addEventListener('scroll', () => {
+            isVisible = window.scrollY < window.innerHeight * 1.1;
+        }, { passive: true });
     }
+
+    // При сворачивании вкладки полностью глушим рендер (экономия батареи и GPU)
+    document.addEventListener('visibilitychange', () => {
+        if (document.hidden) {
+            isVisible = false;
+        } else if (heroSection) {
+            const rect = heroSection.getBoundingClientRect();
+            isVisible = rect.bottom > 0 && rect.top < window.innerHeight;
+        } else {
+            isVisible = window.scrollY < window.innerHeight;
+        }
+    });
     
     function animate() {
         requestAnimationFrame(animate);
         
-        if (!isVisible) return; // Экономим батарею и ресурсы GPU
+        if (!isVisible) return; // Полная экономия ресурсов GPU
         
         const elapsedTime = clock.getElapsedTime();
         
-        torus.rotation.x += 0.005;
-        torus.rotation.y += 0.005;
-        torus.rotation.z += 0.005;
+        torus.rotation.x += 0.004;
+        torus.rotation.y += 0.004;
+        torus.rotation.z += 0.004;
         
-        particlesMesh.rotation.y = -elapsedTime * 0.05;
+        particlesMesh.rotation.y = -elapsedTime * 0.03;
         
-        // Smooth camera movement based on mouse
-        camera.position.x += (mouseX * 10 - camera.position.x) * 0.05;
-        camera.position.y += (-mouseY * 10 - camera.position.y) * 0.05;
+        // Плавное следование камеры
+        camera.position.x += (targetMouseX * 10 - camera.position.x) * 0.05;
+        camera.position.y += (-targetMouseY * 10 - camera.position.y) * 0.05;
         camera.lookAt(scene.position);
         
         renderer.render(scene, camera);
@@ -88,11 +105,15 @@ if (canvas) {
     
     animate();
     
+    let resizeTimeout;
     window.addEventListener('resize', () => {
-        camera.aspect = window.innerWidth / window.innerHeight;
-        camera.updateProjectionMatrix();
-        renderer.setSize(window.innerWidth, window.innerHeight);
-    });
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        }, 150);
+    }, { passive: true });
     
     // Theme switching integration
     const themeObserver = new MutationObserver((mutations) => {
