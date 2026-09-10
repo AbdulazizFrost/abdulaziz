@@ -1973,10 +1973,12 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 30px;
   align-items: stretch;
-  margin-top: 40px;
+  margin-top: 50px;
+  padding-top: 15px;
 }
 
-.pricing-card {
+.pricing-card,
+.pricing-card.glass-card {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -1987,6 +1989,9 @@
   background: var(--glass);
   border: 1px solid var(--glass-border);
   box-shadow: var(--shadow-light);
+  overflow: visible !important;
+  -webkit-mask-image: none !important;
+  mask-image: none !important;
 }
 
 .pricing-card:hover {
@@ -2000,6 +2005,9 @@
   background: var(--glass-dark);
   box-shadow: 0 15px 45px rgba(102, 126, 234, 0.2);
   transform: scale(1.02);
+  overflow: visible !important;
+  -webkit-mask-image: none !important;
+  mask-image: none !important;
 }
 
 .pricing-card.featured:hover {
@@ -2008,18 +2016,19 @@
 
 .popular-tag {
   position: absolute;
-  top: -14px;
+  top: -15px;
   left: 50%;
   transform: translateX(-50%);
   background: var(--accent);
   color: #ffffff;
-  padding: 4px 16px;
+  padding: 6px 18px;
   border-radius: 20px;
   font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.5px;
   box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
   white-space: nowrap;
+  z-index: 20;
 }
 
 .pricing-header {
