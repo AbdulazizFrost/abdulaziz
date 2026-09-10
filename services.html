@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=yes" />
+    <title>Услуги и стоимость — Абдулазиз | Telegram-боты и сайты для бизнеса</title>
+    <meta
+      name="description"
+      content="Стоимость разработки Telegram-ботов и продающих сайтов под ключ. Прозрачные цены, онлайн-калькулятор стоимости и быстрые сроки."
+    />
+    <meta name="keywords" content="Telegram боты цена, заказать сайт, чат-бот для бизнеса, разработка ботов, Узбекистан, Ташкент, Ургенч, Абдулазиз">
+    <meta name="author" content="Абдулазиз">
+    <meta property="og:title" content="Услуги и стоимость — Разработка Telegram-ботов и сайтов">
+    <meta property="og:description" content="Готовые решения для бизнеса: автоматизация в Telegram и конверсионные сайты под ключ">
+    <meta property="og:type" content="website">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=SF+Pro+Display:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🤖</text></svg>">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .services-page-hero {
+            padding: 130px 0 40px;
+            text-align: center;
+        }
+        .back-nav-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            border-radius: 20px;
+            background: var(--glass);
+            border: 1px solid var(--glass-border-light);
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            margin-bottom: 24px;
+            transition: var(--transition-fast);
+        }
+        .back-nav-btn:hover {
+            background: var(--glass-dark);
+            border-color: var(--accent-solid);
+            transform: translateX(-4px);
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="bg-canvas"></canvas>
+
+    <!-- HEADER -->
+    <header>
+        <div class="header-container">
+            <a href="index.html" class="logo">
+                <div class="mark">AB</div>
+                <div class="logo-text">
+                    <h1>Абдулазиз</h1>
+                    <p>Web & Bot Developer</p>
+                </div>
+            </a>
+
+            <nav id="main-nav" aria-label="Основная навигация">
+                <a href="index.html">← В портфолио</a>
+                <a href="#services" class="active">Услуги и тарифы</a>
+                <a href="#calculator">Калькулятор</a>
+                <a href="#faq">Частые вопросы</a>
+                <a href="index.html#contact">Контакты</a>
+                
+                <div class="header-controls" style="display: flex; gap: 10px; margin-left: 20px; align-items: center;">
+                    <button id="theme-toggle" style="background: none; border: none; font-size: 1.2rem; cursor: pointer; color: var(--text-primary);" aria-label="Toggle theme">🌓</button>
+                    <button id="lang-toggle" style="background: var(--accent-solid); color: white; border: none; border-radius: 8px; padding: 4px 8px; font-weight: bold; cursor: pointer; font-size: 0.9rem;" aria-label="Toggle language">EN</button>
+                </div>
+            </nav>
+
+            <button class="menu-toggle" id="menu-toggle" aria-label="Открыть меню" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- HERO SUB-HEADER -->
+    <section class="services-page-hero">
+        <div class="container">
+            <a href="index.html" class="back-nav-btn">
+                <i class="fas fa-arrow-left"></i> <span>Вернуться в портфолио</span>
+            </a>
+            <br>
+            <span class="hero-badge">🚀 Разработка под ключ для бизнеса</span>
+            <h1 class="hero-title" style="margin-top: 12px; font-size: 2.8rem;">Услуги и стоимость разработки</h1>
+            <p class="hero-description" style="margin: 16px auto 0; max-width: 680px; text-align: center;">
+                Автоматизируйте продажи и прием заявок с помощью умных Telegram-ботов и быстрых продающих лендингов. Без скрытых платежей и с фиксированными сроками.
+            </p>
+        </div>
+    </section>
+
+    <!-- SERVICES & PRICING -->
+    <section id="services" class="services-section" style="padding-top: 20px;">
+        <div class="container">
+            <div class="pricing-grid">
+                <!-- Service 1: Telegram Bots -->
+                <div class="pricing-card glass-card">
+                    <div class="pricing-header">
+                        <div class="pricing-icon">🤖</div>
+                        <span class="pricing-badge">Быстрый старт</span>
+                        <h3 class="pricing-title">Telegram-боты для бизнеса</h3>
+                        <p class="pricing-desc">
+                            Автоматизация приема заявок, каталог товаров и запись клиентов 24/7 без зарплаты менеджеру.
+                        </p>
+                        <div class="pricing-price">
+                            <span class="currency">от</span> <span class="amount">$70</span>
+                            <span class="period">/ ~850 000 сум</span>
+                        </div>
+                        <div class="pricing-time"><i class="far fa-clock"></i> <span>Срок: 2–4 дня</span></div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check-circle"></i> <span>Интерактивное меню и прайс-лист</span></li>
+                        <li><i class="fas fa-check-circle"></i> <span>Сбор заявок, номеров телефонов и имен</span></li>
+                        <li><i class="fas fa-check-circle"></i> <span>Мгновенные оповещения вам в Telegram</span></li>
+                        <li><i class="fas fa-check-circle"></i> <span>Интеграция с Google Таблицами / CRM</span></li>
+                        <li><i class="fas fa-check-circle"></i> <span>14 дней бесплатной поддержки</span></li>
+                    </ul>
+                    <a href="https://t.me/Abdulaziz5335?text=Здравствуйте!%20Хочу%20заказать%20Telegram-бота%20для%20бизнеса" target="_blank" class="btn btn-outline pricing-btn">Заказать бота</a>
+                </div>
+
+                <!-- Service 2: Websites & Landings -->
+                <div class="pricing-card glass-card">
+                    <div class="pricing-header">
+                        <div class="pricing-icon">🚀</div>
+                        <span class="pricing-badge">Высокая конверсия</span>
+                        <h3 class="pricing-title">Продающие сайты и Лендинги</h3>
+                        <p class="pricing-desc">
+                            Современный быстрый одностраничник под ключ для запуска рекламы в Instagram, Яндекс и Google.
+                        </p>
+                        <div class="pricing-price">
+                            <span class="currency">от</span> <span class="amount">$100</span>
+                            <span class="period">/ ~1 200 000 сум</span>
+                        </div>
+                        <div class="pricing-time"><i class="far fa-clock"></i> <span>Срок: 3–5 дней</span></div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check-circle"></i> <span>Адаптивный дизайн (Смартфон / ПК)</span></li>
+                        <li><i class="fas fa-check-circle"></i> <span>Молниеносная скорость загрузки</span></li>
+                        <li><i class="fas fa-check-circle"></i> <span>Заявки с сайта прямо в Telegram / Email</span></li>
+                        <li><i class="fas fa-check-circle"></i> <span>Базовая SEO-оптимизация</span></li>
+                        <li><i class="fas fa-check-circle"></i> <span>Бесплатный хостинг и домен в подарок</span></li>
+                    </ul>
+                    <a href="https://t.me/Abdulaziz5335?text=Здравствуйте!%20Хочу%20заказать%20продающий%20сайт-лендинг" target="_blank" class="btn btn-outline pricing-btn">Заказать сайт</a>
+                </div>
+
+                <!-- Service 3: Combo (Hit) -->
+                <div class="pricing-card glass-card featured">
+                    <div class="popular-tag">🔥 ХИТ ПРОДАЖ (ВЫГОДА 25%)</div>
+                    <div class="pricing-header">
+                        <div class="pricing-icon">💎</div>
+                        <span class="pricing-badge featured-badge">Всё включено</span>
+                        <h3 class="pricing-title">Комплект «Сайт + Бот под ключ»</h3>
+                        <p class="pricing-desc">
+                            Полная воронка продаж: продающий сайт для рекламы + Telegram-бот для автоматического закрытия сделок.
+                        </p>
+                        <div class="pricing-price">
+                            <span class="currency">от</span> <span class="amount">$150</span>
+                            <span class="period">/ ~1 800 000 сум</span>
+                        </div>
+                        <div class="pricing-time"><i class="far fa-clock"></i> <span>Срок: 5–7 дней</span></div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check-circle"></i> <span>Полноценный продающий сайт</span></li>
+                        <li><i class="fas fa-check-circle"></i> <span>Telegram-бот автоответчик и сборщик лидов</span></li>
+                        <li><i class="fas fa-check-circle"></i> <span>Сквозная связка «Сайт ➔ Бот ➔ Уведомления»</span></li>
+                        <li><i class="fas fa-check-circle"></i> <span>Помощь с запуском первой рекламы</span></li>
+                        <li><i class="fas fa-check-circle"></i> <span>30 дней технического сопровождения</span></li>
+                    </ul>
+                    <a href="https://t.me/Abdulaziz5335?text=Здравствуйте!%20Хочу%20заказать%20комплект%20Сайт%20+%20Telegram-бот%20под%20ключ" target="_blank" class="btn btn-primary pricing-btn">Заказать под ключ</a>
+                </div>
+            </div>
+
+            <!-- INTERACTIVE CALCULATOR -->
+            <div id="calculator" class="calculator-box glass-card" style="margin-top: 60px; padding: 40px;">
+                <div style="text-align: center; margin-bottom: 28px;">
+                    <span class="hero-badge">⚡ Интерактивный расчет</span>
+                    <h3 style="font-size: 1.8rem; color: var(--text-primary); margin-top: 8px;">Калькулятор стоимости вашего проекта</h3>
+                    <p style="color: var(--text-secondary); font-size: 0.95rem;">Выберите нужные параметры и получите точный предварительный расчет за 10 секунд</p>
+                </div>
+
+                <div class="calc-grid">
+                    <div class="calc-options">
+                        <label class="calc-group-title">1. Что необходимо разработать?</label>
+                        <div class="calc-radio-group">
+                            <label class="calc-radio-label">
+                                <input type="radio" name="projectType" value="bot" checked>
+                                <span class="radio-custom"></span>
+                                <div>
+                                    <strong>Telegram-бот</strong>
+                                    <small>Автоматизация, меню, запись ($70)</small>
+                                </div>
+                            </label>
+                            <label class="calc-radio-label">
+                                <input type="radio" name="projectType" value="site">
+                                <span class="radio-custom"></span>
+                                <div>
+                                    <strong>Лендинг / Одностраничник</strong>
+                                    <small>Продающий сайт под ключ ($100)</small>
+                                </div>
+                            </label>
+                            <label class="calc-radio-label">
+                                <input type="radio" name="projectType" value="combo">
+                                <span class="radio-custom"></span>
+                                <div>
+                                    <strong>Комплект «Сайт + Бот»</strong>
+                                    <small>Единая система со скидкой ($150)</small>
+                                </div>
+                            </label>
+                        </div>
+
+                        <label class="calc-group-title" style="margin-top: 24px;">2. Дополнительные опции:</label>
+                        <div class="calc-checkbox-group">
+                            <label class="calc-check-label">
+                                <input type="checkbox" id="opt-payment" value="30">
+                                <span class="check-custom"></span>
+                                <span>Онлайн-оплата (Click / Payme / Карты) (+$30)</span>
+                            </label>
+                            <label class="calc-check-label">
+                                <input type="checkbox" id="opt-crm" value="25">
+                                <span class="check-custom"></span>
+                                <span>Интеграция с CRM / Google Таблицами (+$25)</span>
+                            </label>
+                            <label class="calc-check-label">
+                                <input type="checkbox" id="opt-multilang" value="20">
+                                <span class="check-custom"></span>
+                                <span>Мультиязычность (Русский / O'zbek / English) (+$20)</span>
+                            </label>
+                            <label class="calc-check-label">
+                                <input type="checkbox" id="opt-fast" value="35">
+                                <span class="check-custom"></span>
+                                <span>Срочный запуск за 48 часов (+$35)</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="calc-result-panel glass-card">
+                        <div class="result-label">Ориентировочная стоимость:</div>
+                        <div class="result-price" id="calcPriceUSD">$70</div>
+                        <div class="result-sum" id="calcPriceUZS">~ 850 000 сум</div>
+                        <div class="result-time" id="calcTime"><i class="far fa-clock"></i> Срок: 2–3 дня</div>
+
+                        <a id="calcTelegramBtn" href="https://t.me/Abdulaziz5335?text=Здравствуйте!%20Рассчитал%20стоимость%20проекта:%20Telegram-бот%20($70)" target="_blank" class="btn btn-primary" style="width: 100%; display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 20px; text-decoration: none;">
+                            <i class="fab fa-telegram-plane"></i> <span>Отправить расчет в Telegram</span>
+                        </a>
+                        <small style="display: block; text-align: center; color: var(--text-muted); margin-top: 10px; font-size: 0.8rem;">
+                            * Точная стоимость фиксируется после согласования технического задания
+                        </small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ SECTION -->
+            <div id="faq" style="margin-top: 80px;">
+                <h3 style="text-align: center; font-size: 1.8rem; color: var(--text-primary); margin-bottom: 30px;">Часто задаваемые вопросы</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px;">
+                    <div class="glass-card" style="padding: 24px;">
+                        <h4 style="font-size: 1.1rem; margin-bottom: 10px; color: var(--text-primary);">Как происходит оплата?</h4>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.5;">Работаем по схеме 50/50: 50% предоплата перед началом, оставшиеся 50% — после демонстрации готового работающего бота или сайта.</p>
+                    </div>
+                    <div class="glass-card" style="padding: 24px;">
+                        <h4 style="font-size: 1.1rem; margin-bottom: 10px; color: var(--text-primary);">Где будет работать бот?</h4>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.5;">Я бесплатно помогу запустить бота на надежном облачном сервере, который работает 24/7 без перебоев.</p>
+                    </div>
+                    <div class="glass-card" style="padding: 24px;">
+                        <h4 style="font-size: 1.1rem; margin-bottom: 10px; color: var(--text-primary);">Что если понадобятся правки?</h4>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.5;">В каждый тариф входит от 14 до 30 дней бесплатной гарантийной поддержки и внесения правок.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CTA BANNER -->
+            <div class="glass-card" style="margin-top: 60px; padding: 40px; text-align: center; border: 1px solid var(--accent-solid);">
+                <h3 style="font-size: 1.6rem; color: var(--text-primary); margin-bottom: 12px;">Есть индивидуальный проект или идея?</h3>
+                <p style="color: var(--text-secondary); max-width: 550px; margin: 0 auto 24px;">Напишите мне в Telegram напрямую. Я бесплатно проконсультирую, подберу оптимальный стек и составлю план реализации за 30 минут.</p>
+                <a href="https://t.me/Abdulaziz5335" target="_blank" class="btn btn-primary" style="display: inline-flex; align-items: center; gap: 8px; text-decoration: none; padding: 14px 28px;">
+                    <i class="fab fa-telegram"></i> Написать Абдулазизу (@Abdulaziz5335)
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer style="margin-top: 80px;">
+        <div class="container">
+            <div class="footer-logo">Абдулазиз</div>
+            <p class="footer-text">Web & Telegram Bots Developer</p>
+            <div class="social-links">
+                <a href="index.html" class="social-link" title="Портфолио"><i class="fas fa-home"></i></a>
+                <a href="https://t.me/Abdulaziz5335" target="_blank" class="social-link" title="Telegram"><i class="fab fa-telegram"></i></a>
+                <a href="https://github.com/AbdulazizFrost" target="_blank" class="social-link" title="GitHub"><i class="fab fa-github"></i></a>
+            </div>
+            <p class="footer-text">© <span id="year"></span> Все права защищены</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="3d-background.js"></script>
+    <script>
+        document.getElementById("year").textContent = new Date().getFullYear();
+
+        // Theme toggle
+        const themeBtn = document.getElementById('theme-toggle');
+        let currentTheme = localStorage.getItem('theme') || 'dark';
+        document.documentElement.setAttribute('data-theme', currentTheme);
+
+        if (themeBtn) {
+            themeBtn.addEventListener('click', () => {
+                currentTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                document.documentElement.setAttribute('data-theme', currentTheme);
+                localStorage.setItem('theme', currentTheme);
+            });
+        }
+
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const mainNav = document.getElementById('main-nav');
+        if (menuToggle && mainNav) {
+            menuToggle.addEventListener('click', () => {
+                mainNav.classList.toggle('active');
+            });
+        }
+
+        // Calculator logic
+        const radioInputs = document.querySelectorAll('input[name="projectType"]');
+        const checkboxInputs = document.querySelectorAll('.calc-checkbox-group input[type="checkbox"]');
+        const priceUsdEl = document.getElementById('calcPriceUSD');
+        const priceUzsEl = document.getElementById('calcPriceUZS');
+        const timeEl = document.getElementById('calcTime');
+        const tgBtn = document.getElementById('calcTelegramBtn');
+
+        function updateCalculator() {
+            let basePrice = 70;
+            let projectTitle = "Telegram-бот для бизнеса";
+            let days = "2–3 дня";
+
+            const selectedRadio = document.querySelector('input[name="projectType"]:checked');
+            if (selectedRadio) {
+                if (selectedRadio.value === 'bot') {
+                    basePrice = 70;
+                    projectTitle = "Telegram-бот для бизнеса";
+                    days = "Срок: 2–3 дня";
+                } else if (selectedRadio.value === 'site') {
+                    basePrice = 100;
+                    projectTitle = "Продающий сайт-лендинг";
+                    days = "Срок: 3–5 дней";
+                } else if (selectedRadio.value === 'combo') {
+                    basePrice = 150;
+                    projectTitle = "Комплект «Сайт + Telegram-бот»";
+                    days = "Срок: 5–7 дней";
+                }
+            }
+
+            let extraTotal = 0;
+            let selectedAddons = [];
+
+            checkboxInputs.forEach(cb => {
+                if (cb.checked) {
+                    const val = parseInt(cb.value, 10) || 0;
+                    extraTotal += val;
+                    const parentLabel = cb.closest('label');
+                    if (parentLabel) {
+                        const text = parentLabel.querySelector('span:last-child')?.textContent.trim();
+                        if (text) selectedAddons.push(text);
+                    }
+                }
+            });
+
+            const fastCheckbox = document.getElementById('opt-fast');
+            if (fastCheckbox && fastCheckbox.checked) {
+                days = "Срочно: 24–48 часов ⚡";
+            }
+
+            const totalPriceUSD = basePrice + extraTotal;
+            const uzsRate = 12600;
+            const totalPriceUZS = Math.round((totalPriceUSD * uzsRate) / 50000) * 50000;
+            const formattedUZS = totalPriceUZS.toLocaleString('ru-RU');
+
+            if (priceUsdEl) priceUsdEl.textContent = `$${totalPriceUSD}`;
+            if (priceUzsEl) priceUzsEl.textContent = `~ ${formattedUZS} сум`;
+            if (timeEl) timeEl.innerHTML = `<i class="far fa-clock"></i> ${days}`;
+
+            let messageText = `Здравствуйте, Абдулазиз! Я рассчитал проект на вашем сайте:\n\n`;
+            messageText += `🔹 Услуга: ${projectTitle}\n`;
+            if (selectedAddons.length > 0) {
+                messageText += `🔹 Доп. опции:\n - ${selectedAddons.join('\n - ')}\n`;
+            }
+            messageText += `🔹 Ориентир по бюджету: $${totalPriceUSD} (~${formattedUZS} сум)\n`;
+            messageText += `\nХочу обсудить детали и запустить проект!`;
+
+            if (tgBtn) tgBtn.href = `https://t.me/Abdulaziz5335?text=${encodeURIComponent(messageText)}`;
+        }
+
+        radioInputs.forEach(r => r.addEventListener('change', updateCalculator));
+        checkboxInputs.forEach(c => c.addEventListener('change', updateCalculator));
+        updateCalculator();
+    </script>
+</body>
+</html>
